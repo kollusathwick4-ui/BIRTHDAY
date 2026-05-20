@@ -257,7 +257,7 @@ let blast25Done = false;
     }
 
     /* 70% — "SAI POOJA" + emojis visible → massive grand finale */
-    if (pct >= 70 && !blast75Done) {
+    if (pct >= 60 && !blast75Done) {
       blast75Done = true;
       const cx = rect.left + W / 2;
       const cy = rect.top + H * 0.75;
@@ -284,11 +284,11 @@ let blast25Done = false;
     document.getElementById('progress-fill').style.width = pct + '%';
     document.getElementById('progress-pct').textContent  = pct + '%';
 
-    if (pct >= 75 && !preview50Shown) {
+    if (pct >= 60 && !preview50Shown) {
       preview50Shown = true;
       showPreviewPhoto();
     }
-    if (pct >= 75 && !songUnlocked) {
+    if (pct >= 60 && !songUnlocked) {
       songUnlocked = true;
       revealComplete();
     }
@@ -325,9 +325,25 @@ function showPreviewPhoto() {
     spawnSpark(Math.random() * window.innerWidth, Math.random() * window.innerHeight * 0.7);
   }
   setTimeout(() => preview.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 100);
+
+  /* ── Clicking the preview photo opens it in the lightbox ── */
+  const previewImg = preview.querySelector('img');
+  if (previewImg) {
+    previewImg.style.cursor = 'pointer';
+    previewImg.addEventListener('click', () => {
+      openLightbox('personal', 0);
+    }, { once: true });
+  }
 }
 
 function revealComplete() {
+  /* ── Clear remaining gold overlay instantly ── */
+  const canvas = document.getElementById('scratchCanvas');
+  const ctx = canvas.getContext('2d');
+  ctx.globalCompositeOperation = 'destination-out';
+  ctx.fillStyle = 'rgba(0,0,0,1)';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
   for (let i = 0; i < 6; i++) {
     setTimeout(() => {
       for (let j = 0; j < 18; j++) {
