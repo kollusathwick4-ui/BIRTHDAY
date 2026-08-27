@@ -154,8 +154,8 @@ function initScratch() {
   gName.addColorStop(0, '#ff9f43');
   gName.addColorStop(1, '#a855f7');
   ctx.fillStyle = gName;
-  ctx.fillText('SHYAMALA', W / 2, H / 2 + Math.round(5 * scale));/*NAME OF LINE-1*/
-  ctx.fillText('SAI POOJA', W / 2, H / 2 + Math.round(52 * scale));/*NAME OF LINE-2*/
+  ctx.fillText('KOLLU', W / 2, H / 2 + Math.round(5 * scale));/*NAME OF LINE-1*/
+  ctx.fillText('SATHWICK', W / 2, H / 2 + Math.round(52 * scale));/*NAME OF LINE-2*/
 
   /* Emojis */
   const emojiSize = Math.round(26 * scale);
@@ -238,7 +238,7 @@ let blast25Done = false;
       for (let i = 0; i < 40; i++) spawnSpark(cx + (Math.random()-0.5)*80, cy + (Math.random()-0.5)*40);
     }
 
-    /* 50% — "SHYAMALA" is visible → big burst */
+    /* 50% — "KOLLU" is visible → big burst */
     if (pct >= 50 && !blast50Done) {
       blast50Done = true;
       const cx = rect.left + W / 2;
@@ -256,7 +256,7 @@ let blast25Done = false;
       }
     }
 
-    /* 70% — "SAI POOJA" + emojis visible → massive grand finale */
+    /* 70% — "SATHWICK" + emojis visible → massive grand finale */
     if (pct >= 60 && !blast75Done) {
       blast75Done = true;
       const cx = rect.left + W / 2;
